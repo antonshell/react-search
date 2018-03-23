@@ -5,7 +5,6 @@ class SearchOrder extends Component {
     render() {
         return (
             <div className="row">
-                {/* BEGIN ORDER RESULT */}
                 <div className="col-sm-6">
                     <div className="btn-group">
                         <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -19,7 +18,6 @@ class SearchOrder extends Component {
                         </ul>
                     </div>
                 </div>
-                {/* END ORDER RESULT */}
 
                 <div className="col-md-6 text-right">
                     <div className="btn-group">

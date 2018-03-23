@@ -8,7 +8,7 @@ class About extends Component {
 
                 <div className="row">
 
-                    111111111111
+                    <h1>About</h1>
 
                 </div>
 

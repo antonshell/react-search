@@ -71,3 +71,11 @@ body{
 .rate{
     min-width: 100px;
 }
+
+.search-input{
+    width: 94%;
+}
+
+.search-input input{
+    width: 100%;
+}
