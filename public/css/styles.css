@@ -67,3 +67,7 @@ body{
     padding-top: 20px;
     background: #eee;
 }
+
+.rate{
+    min-width: 100px;
+}
