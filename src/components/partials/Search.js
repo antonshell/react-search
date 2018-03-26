@@ -16,6 +16,7 @@ class SearchBar extends Component {
             suggestions: [],
         };
 
+        this.apiUrl = 'http://127.0.0.1:8099/api';
         this.state.searchTerm = "Дрели";
 
         this.apiSearch();
@@ -23,10 +24,12 @@ class SearchBar extends Component {
         this.searchUpdated = this.searchUpdated.bind(this)
     }
 
+
+
     apiSearch(){
         axios({
             method:'post',
-            url:'http://127.0.0.1:8099/api/search',
+            url: this.apiUrl + '/search',
             data: {
                 "query": this.state.searchTerm
             },
@@ -42,7 +45,7 @@ class SearchBar extends Component {
     apiSuggest(){
         axios({
             method:'post',
-            url:'http://127.0.0.1:8099/api/suggest',
+            url: this.apiUrl + '/suggest',
             data: {
                 "query": this.state.searchTerm
             },
