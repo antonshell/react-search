@@ -15,40 +15,53 @@ class SearchBar extends Component {
             products: [],
             suggestions: [],
         };
+
+        this.state.searchTerm = "Дрели";
+
+        this.apiSearch();
+
         this.searchUpdated = this.searchUpdated.bind(this)
+    }
+
+    apiSearch(){
+        axios({
+            method:'post',
+            url:'http://127.0.0.1:8099/api/search',
+            data: {
+                "query": this.state.searchTerm
+            },
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(res => {
+            const products = res.data;
+            this.setState({ products });
+        });
+    }
+
+    apiSuggest(){
+        axios({
+            method:'post',
+            url:'http://127.0.0.1:8099/api/suggest',
+            data: {
+                "query": this.state.searchTerm
+            },
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(res => {
+            const suggestions = res.data;
+            this.setState({ suggestions });
+        });
     }
 
     render() {
 
         if(this.state.searchTerm != this.state.prevSearchTerm){
             this.state.prevSearchTerm = this.state.searchTerm;
-            axios({
-                method:'post',
-                url:'http://127.0.0.1:8099/api/search',
-                data: {
-                    "query": this.state.searchTerm
-                },
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            }).then(res => {
-                const products = res.data;
-                this.setState({ products });
-            });
 
-            axios({
-                method:'post',
-                url:'http://127.0.0.1:8099/api/suggest',
-                data: {
-                    "query": this.state.searchTerm
-                },
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            }).then(res => {
-                const suggestions = res.data;
-                this.setState({ suggestions });
-            });
+            this.apiSearch();
+            this.apiSuggest();
         }
 
         return (
