@@ -16,7 +16,8 @@ class SearchBar extends Component {
             suggestions: [],
         };
 
-        this.apiUrl = 'http://127.0.0.1:8099/api';
+        //this.apiUrl = 'http://127.0.0.1:8099/api';
+        this.apiUrl = '/api';
         this.state.searchTerm = "Дрели";
 
         this.apiSearch();
@@ -37,7 +38,7 @@ class SearchBar extends Component {
                 'Content-Type': 'application/json',
             }
         }).then(res => {
-            const products = res.data;
+            const products = res.data.products;
             this.setState({ products });
         });
     }

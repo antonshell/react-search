@@ -23,6 +23,7 @@ class ProductRow extends Component {
         let product = this.props.product;
 
         let rate = Math.floor(Math.random() * 5) + 1;
+        let price = Math.round(product.price);
 
         return (
 
@@ -47,7 +48,7 @@ class ProductRow extends Component {
                         <i className="fa fa-star-o"></i>
                     </span>
                 </td>
-                <td className="price text-right">{product.price} руб.</td>
+                <td className="price text-right">{price} руб.</td>
             </tr>
         );
     }
