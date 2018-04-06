@@ -18,29 +18,7 @@ RUN docker-php-ext-install mcrypt zip intl mbstring pdo_mysql exif \
 RUN pecl install -o -f xdebug \
     && rm -rf /tmp/pear
 
-COPY ./install-composer.sh /
-COPY ./php.ini /usr/local/etc/php/
-COPY ./www.conf /usr/local/etc/php/
-
-RUN apt-get purge -y g++ \
-    && apt-get autoremove -y \
-    && rm -r /var/lib/apt/lists/* \
-    && rm -rf /tmp/* \
-    && sh /install-composer.sh \
-    && rm /install-composer.sh
-
 RUN usermod -u 1000 www-data
-
-
-# install node js
-RUN cd ~
-RUN apt-get update
-RUN curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh
-RUN bash nodesource_setup.sh
-RUN apt-get install -y nodejs
-RUN apt-get install -y build-essential
-
-VOLUME /root/.composer
 
 EXPOSE 9000
 CMD ["php-fpm"]
