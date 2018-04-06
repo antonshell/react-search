@@ -16,17 +16,14 @@ class SearchBar extends Component {
             suggestions: [],
         };
 
-        //this.apiUrl = 'http://127.0.0.1:8099/api';
-        this.apiUrl = '/api';
+        this.apiUrl = '/proxy/proxy.php?q=';
         this.state.searchTerm = "Дрели";
 
         this.apiSearch();
 
         this.searchUpdated = this.searchUpdated.bind(this)
     }
-
-
-
+    
     apiSearch(){
         axios({
             method:'post',

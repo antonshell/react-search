@@ -1,0 +1,5 @@
+FROM nginx:1.12-alpine
+
+ADD . /app
+
+COPY /docker/nginx/vhost.conf /etc/nginx/conf.d/vhost.conf
