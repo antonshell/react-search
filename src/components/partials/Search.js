@@ -23,7 +23,7 @@ class SearchBar extends Component {
 
         this.searchUpdated = this.searchUpdated.bind(this)
     }
-    
+
     apiSearch(){
         axios({
             method:'post',
