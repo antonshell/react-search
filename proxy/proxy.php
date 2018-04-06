@@ -10,7 +10,7 @@ $scriptName = $_SERVER['SCRIPT_NAME'];
 $requestUri = $_SERVER['REQUEST_URI'];
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-$path = str_replace($scriptName, '', $requestUri);
+$path = isset($_GET['q']) ? $_GET['q'] : '';
 
 $data = file_get_contents('php://input');
 $headers = ['Content-Type: application/json'];
